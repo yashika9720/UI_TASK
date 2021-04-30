@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FEEDBACK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <form>
+            <div class="form-info">
+                <img src="https://content1.jdmagicbox.com/comp/noida/d2/011pxx11.xx11.130413144039.i5d2/catalogue/bajaj-capital-ltd-noida-sector-18-noida-share-brokers-sr2ekwpqq8.jpg?interpolation=lanczos-none&output-format=jpg&resize=1024:*&crop=1024:270px;*,*">
+                <h3 class="form-heading">Please rate your satisfaction on the following attribute of our service</h3>
+            </div>
+
+            <div class="progress-container">
+                <div class="row">
+                    <h3>Responsiveness</h3>
+                    <div class="btns">
+                        <span>
+							<p>Extremely Bad</p>
+							<button class="progress-btn" id="1" value="Extremely Bad" name="Responsiveness"></button>
+						</span>
+                        <span>
+							<p>Bad</p>
+							<button class="progress-btn" id="2" value="Bad" name="Responsiveness"></button>
+						</span>
+                        <span>
+							<p>Normal</p>
+							<button class="progress-btn" id="3" value="Normal" name="Responsiveness"></button>
+						</span>
+                        <span>
+							<p>Good</p>
+							<button class="progress-btn" id="4" value="Good" name="Responsiveness"></button>
+						</span>
+                        <span>
+							<p>Extremely Good</p>
+							<button class="progress-btn" id="5" value="Extremely Good" name="Responsiveness"></button>
+						</span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <h3>Competency in advising right solutions</h3>
+                    <div class="btns">
+                        <span>
+							<p>Extremely Bad</p>
+							<button class="progress-btn" id="1" value="Extremely Bad" name="Competency in advising right solutions"></button>
+						</span>
+                        <span>
+							<p>Bad</p>
+							<button class="progress-btn" id="2" value="Bad" name="Competency in advising right solutions"></button>
+						</span>
+                        <span>
+							<p>Normal</p>
+							<button class="progress-btn" id="3" value="Normal" name="Competency in advising right solutions"></button>
+						</span>
+                        <span>
+							<p>Good</p>
+							<button class="progress-btn" id="4" value="Good" name="Competency in advising right solutions"></button>
+						</span>
+                        <span>
+							<p>Extremely Good</p>
+							<button class="progress-btn" id="5" value="Extremely Good" name="Competency in advising right solutions"></button>
+						</span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <h3>Trustworthiness</h3>
+                    <div class="btns">
+                        <span>
+							<p>Extremely Bad</p>
+							<button class="progress-btn" id="1" value="Extremely Bad" name="Trustworthiness"></button>
+						</span>
+                        <span>
+							<p>Bad</p>
+							<button class="progress-btn" id="2" value="Bad"  name="Trustworthiness"></button>
+						</span>
+                        <span>
+							<p>Normal</p>
+							<button class="progress-btn" id="3" value="Normal"  name="Trustworthiness"></button>
+						</span>
+                        <span>
+							<p>Good</p>
+							<button class="progress-btn" id="4" value="Good"  name="Trustworthiness"></button>
+						</span>
+                        <span>
+							<p>Extremely Good</p>
+							<button class="progress-btn" id="5" value="Extremely Good" name="Trustworthiness"></button>
+						</span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <h3>Customer service and support</h3>
+                    <div class="btns">
+                        <span>
+							<p>Extremely Bad</p>
+							<button class="progress-btn" id="1" value="Extremely Bad" name="Customer service and support"></button>
+						</span>
+                        <span>
+							<p>Bad</p>
+							<button class="progress-btn" id="2" value="Bad"  name="Customer service and support"></button>
+						</span>
+                        <span>
+							<p>Normal</p>
+							<button class="progress-btn" id="3" value="Normal"  name="Customer service and support"></button>
+						</span>
+                        <span>
+							<p>Good</p>
+							<button class="progress-btn" id="4" value="Good"  name="Customer service and support"></button>
+						</span>
+                        <span>
+							<p>Extremely Good</p>
+							<button class="progress-btn" id="5" value="Extremely Good" name="Customer service and support"></button>
+						</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="showData(event);" type="submit">Next</button>
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript">
+    // Create a empty object for store form data after submit
+    const dataObj = {};
+
+    // setColor function use this array for apply a colour
+    const colorsName = ['red', 'orange', 'yellow', 'light-green', 'green'];
+
+    function setColor(element) {
+        const parent = element.parentElement.parentElement; // get a parent div
+        const span = parent.querySelectorAll('span'); // get all span tag
+        const name = element.getAttribute('name'); // get a name attribute
+
+        for (let i = 0; i < span.length; i++) {
+            span[i].querySelector('button').className = 'progress-btn';
+        }
+        for (let i = 0; i < element.id; i++) {
+            span[i].querySelector('button').classList.add(colorsName[element.id - 1]);
+        }
+
+        dataObj[`${name}`] = element.value; // store data in object
+    }
+
+    const btns = document.querySelectorAll('.progress-btn');
+
+    Array.from(btns).forEach((element) => {
+        element.addEventListener('click', e => e.preventDefault());
+        element.addEventListener('mouseover', (e) => {
+            e.preventDefault();
+            setColor(e.target); // invoke a function 
+        });
+    });
+
+
+    function showData(e) {
+        e.preventDefault();
+        console.table(dataObj);
+    }
+</script>
+
+</html>
